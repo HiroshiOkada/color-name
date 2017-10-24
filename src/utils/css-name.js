@@ -293,4 +293,4 @@ const hexToNameData = {
 
 export const nameToHex = name => nameToHexData[name.toLowerCase()]
 export const hexToName = hex => hexToNameData[hex.toLowerCase()]
-export const namedHexs = () => Object.keys(hexToNameData)
+export const namedHexes = () => Object.keys(hexToNameData)

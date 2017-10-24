@@ -1,4 +1,4 @@
-import { nameToHex, hexToName, namedHexs } from './css-name'
+import { nameToHex, hexToName, namedHexes } from './css-name'
 
 const nameHexList = [
   { name: 'AliceBlue', hex: 'F0F8FF' },
@@ -167,11 +167,11 @@ describe('hexToName', () => {
   })
 })
 
-describe('namedHexs', () => {
+describe('namedHexes', () => {
   it('returns all hexadecimal valus that have name', () => {
-    const hexs = namedHexs()
+    const hexes = namedHexes()
     nameHexList.forEach(({ hex }) => {
-      expect(hexs).toContain(hex.toLowerCase())
+      expect(hexes).toContain(hex.toLowerCase())
     })
   })
 })
