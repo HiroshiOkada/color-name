@@ -23,16 +23,6 @@
   color: rgba(0, 0, 0, 0.87);
 }
 
-.Color-fixInputOther {
-  height: 24px;
-  font-size: 16px;
-  border-style: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-left: 5px;
-  padding-left: 5px;
-  color: rgba(0, 0, 0, 0.87);
-}
-
 .Color-label {
   display: inline-block;
   min-width: 9em;

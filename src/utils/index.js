@@ -13,9 +13,11 @@ function nomalizeHex(text) {
 
   const hex3Match = text.match(/^#?([0-9a-fA-F]{3})$/)
   if (hex3Match) {
-    return `${hex3Match[1][0]}${hex3Match[1][0]}` +
+    return (
+      `${hex3Match[1][0]}${hex3Match[1][0]}` +
       `${hex3Match[1][1]}${hex3Match[1][1]}` +
       `${hex3Match[1][2]}${hex3Match[1][2]}`
+    )
   }
 
   return null
@@ -26,7 +28,12 @@ export function getInfo(hex) {
   const color = `#${hex.toUpperCase()}`
   const hsl = convert.hex.hsl(hex)
   const hwb = convert.hex.hwb(hex)
-  const title = color + ' ' + Object.keys(names).map(key => names[key].join(', ')).join(', ')
+  const title =
+    color +
+    ' ' +
+    Object.keys(names)
+      .map(key => names[key].join(', '))
+      .join(', ')
 
   return {
     title,
