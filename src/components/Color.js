@@ -29,8 +29,6 @@ function LabelValue(props) {
 function doNothing() {}
 
 function Color(props) {
-  console.log(props)
-
   const { initiallyExpanded, info } = props
 
   const { title, css3, css4, jis, color, rgb, hsl, hwb, cmyk } = info

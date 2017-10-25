@@ -4,8 +4,6 @@ import Home from './Home'
 
 import { distanceHSV } from '../utils/color-utils'
 
-console.log(distanceHSV('ffff00', 'eeccee'))
-
 function App() {
   return (
     <MuiThemeProvider>
