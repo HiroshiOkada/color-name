@@ -1,4 +1,4 @@
-import { nameToHex, hexToName, namedHexes } from './css-name'
+import { nameToHex, hexToName, namedHexes } from './name-hex'
 
 const nameHexList = [
   { name: 'AliceBlue', hex: 'F0F8FF' },

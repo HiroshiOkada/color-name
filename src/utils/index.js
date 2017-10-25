@@ -1,5 +1,5 @@
 import convert from 'color-convert'
-import { hexToName } from './css-name'
+import { hexToName } from './name-hex'
 
 export function getInfo(hex) {
   const cssName = (hexToName(hex) || []).join(', ')

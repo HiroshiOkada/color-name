@@ -1,5 +1,5 @@
 import convert from 'color-convert'
-import { namedHexes } from './css-name'
+import { namedHexes } from './name-hex'
 
 const pow2 = number => number * number
 
