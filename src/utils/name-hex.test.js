@@ -1,6 +1,6 @@
-import { nameToHex, hexToName, namedHexes } from './name-hex'
+import { nameToHex, hexToNames, namedHexes } from './name-hex'
 
-const nameHexList = [
+const css3NameHexList = [
   { name: 'AliceBlue', hex: 'F0F8FF' },
   { name: 'AntiqueWhite', hex: 'FAEBD7' },
   { name: 'Aqua', hex: '00FFFF' },
@@ -120,7 +120,6 @@ const nameHexList = [
   { name: 'Plum', hex: 'DDA0DD' },
   { name: 'PowderBlue', hex: 'B0E0E6' },
   { name: 'Purple', hex: '800080' },
-  { name: 'RebeccaPurple', hex: '663399' },
   { name: 'Red', hex: 'FF0000' },
   { name: 'RosyBrown', hex: 'BC8F8F' },
   { name: 'RoyalBlue', hex: '4169E1' },
@@ -152,25 +151,31 @@ const nameHexList = [
 ]
 
 describe('nameToHex', () => {
-  it('returns hexadecimal numbers from all css names', () => {
-    nameHexList.forEach(({ name, hex }) => {
+  it('returns hexadecimal numbers from all CSS3 names', () => {
+    css3NameHexList.forEach(({ name, hex }) => {
       expect(nameToHex(name).toLowerCase()).toEqual(hex.toLowerCase())
     })
   })
+  it('returns "663399" to ""RebeccaPurple', () => {
+    expect(nameToHex('RebeccaPurple').toLowerCase()).toEqual('663399')
+  })
 })
 
-describe('hexToName', () => {
+describe('hexToNames', () => {
   it('returns css names from all hexadecimal valus', () => {
-    nameHexList.forEach(({ name, hex }) => {
-      expect(hexToName(hex)).toContain(name)
+    css3NameHexList.forEach(({ name, hex }) => {
+      expect(hexToNames(hex).css3).toContain(name)
     })
+  })
+  it('returns css4: "RebeccaPurple" to "663399"', () => {
+    expect(hexToNames('663399').css4).toContain('RebeccaPurple')
   })
 })
 
 describe('namedHexes', () => {
   it('returns all hexadecimal valus that have name', () => {
     const hexes = namedHexes()
-    nameHexList.forEach(({ hex }) => {
+    css3NameHexList.forEach(({ hex }) => {
       expect(hexes).toContain(hex.toLowerCase())
     })
   })
