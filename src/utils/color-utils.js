@@ -35,9 +35,10 @@ export const distanceRGB = (hex1, hex2) => {
   )
 }
 
-export const distance = (hex1, hex2) => (Math.min(distanceHSV(hex1, hex2), distanceRGB(hex1, hex2)))
+export const distance = (hex1, hex2) =>
+  Math.min(distanceHSV(hex1, hex2), distanceRGB(hex1, hex2))
 
 export const nearColors = hex => {
-  const cmp = (hex1, hex2) => (distance(hex, hex1) - distance(hex, hex2))
+  const cmp = (hex1, hex2) => distance(hex, hex1) - distance(hex, hex2)
   return namedHexes().sort(cmp)
 }

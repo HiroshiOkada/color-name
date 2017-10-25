@@ -19,8 +19,6 @@ export function getInfo(hex) {
 }
 
 export function getInfoList(searchText) {
-  const infoList = [
-    getInfo(searchText.replace('#',''))
-  ]
+  const infoList = [getInfo(searchText.replace('#', ''))]
   return infoList
 }
