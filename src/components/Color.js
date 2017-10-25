@@ -11,7 +11,7 @@ function ColorBox(props) {
 function LabelValue(props) {
   const { label, value, id } = props
   return (
-    <CardText expandable>
+    <div className="Color-Label">
       <label htmlFor={id} className="Color-label">
         {label}:
       </label>
@@ -22,7 +22,7 @@ function LabelValue(props) {
         value={value}
         onChange={doNothing}
       />
-    </CardText>
+    </div>
   )
 }
 
@@ -33,7 +33,7 @@ function Color(props) {
 
   const { initiallyExpanded, info } = props
 
-  const { title, cssName, color, rgb, hsl, hwb, cmyk, otherNames } = info
+  const { title, css3, css4, jis, color, rgb, hsl, hwb, cmyk } = info
 
   const id = color
   return (
@@ -43,23 +43,31 @@ function Color(props) {
           <ColorBox color={color} />
         </CardHeader>
         <CardText expandable>
-          <LabelValue label="CSS Name" value={cssName} id={`${id}-cssName`} />
+          {css3 ? (
+            <LabelValue
+              label="CSS3 Name"
+              value={css3.join(', ')}
+              id={`${id}-css3`}
+            />
+          ) : null}
+          {css4 ? (
+            <LabelValue
+              label="CSS4 Name"
+              value={css4.join(', ')}
+              id={`${id}-css3`}
+            />
+          ) : null}
+          {jis ? (
+            <LabelValue
+              label="JIS Name"
+              value={jis.join(', ')}
+              id={`${id}-css3`}
+            />
+          ) : null}
           <LabelValue label="RGB" value={`rgb${rgb}`} id={`${id}-rgb`} />
           <LabelValue label="HSL" value={`hsl${hsl}`} id={`${id}-hsl`} />
           <LabelValue label="HWB" value={`hwb${hwb}`} id={`${id}-hwb`} />
           <LabelValue label="CYMK" value={`cmyk${cmyk}`} id={`${id}-cmyk`} />
-          <CardText expandable>
-            {otherNames.map(name => (
-              <input
-                key={`${id}-other-${name}`}
-                type="text"
-                className="Color-fixInputOther"
-                value={name}
-                style={{ width: `${name.length + 1}em` }}
-                onChange={doNothing}
-              />
-            ))}
-          </CardText>
         </CardText>
       </Card>
     </div>

@@ -1,20 +1,19 @@
 import convert from 'color-convert'
-import { hexToName } from './name-hex'
+import { hexToNames } from './name-hex'
 
 export function getInfo(hex) {
-  const cssName = (hexToName(hex) || []).join(', ')
+  const names = hexToNames(hex) || {}
   const color = `#${hex}`
   const hsl = convert.hex.hsl(hex)
   const hwb = convert.hex.hwb(hex)
   return {
     title: color,
-    cssName,
-    color: color,
+    ...names,
+    color,
     rgb: `(${convert.hex.rgb(hex).join(', ')})`,
     hsl: `(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`,
     hwb: `(${hwb[0]}, ${hwb[1]}%, ${hwb[2]}%)`,
-    cmyk: '(0%, 0%, 100%, 0%)',
-    otherNames: []
+    cmyk: '(0%, 0%, 100%, 0%)'
   }
 }
 
