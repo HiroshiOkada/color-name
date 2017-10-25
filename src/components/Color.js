@@ -33,7 +33,7 @@ function Color(props) {
 
   const { initiallyExpanded, info } = props
 
-  const { title, cssName, color, rgb, rgba, hsl, hwb, cmyk, otherNames } = info
+  const { title, cssName, color, rgb, hsl, hwb, cmyk, otherNames } = info
 
   const id = color
   return (
@@ -45,7 +45,6 @@ function Color(props) {
         <CardText expandable>
           <LabelValue label="CSS Name" value={cssName} id={`${id}-cssName`} />
           <LabelValue label="RGB" value={`rgb${rgb}`} id={`${id}-rgb`} />
-          <LabelValue label="RGBA" value={`rgba${rgba}`} id={`${id}-rgba`} />
           <LabelValue label="HSL" value={`hsl${hsl}`} id={`${id}-hsl`} />
           <LabelValue label="HWB" value={`hwb${hwb}`} id={`${id}-hwb`} />
           <LabelValue label="CYMK" value={`cmyk${cmyk}`} id={`${id}-cmyk`} />

@@ -5,32 +5,26 @@ import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import Color from './Color'
 import './Home.css'
+import { getInfoList } from '../utils'
 
 class Home extends Component {
   state = {
-    dataSource: ['#fff']
+    dataSource: ['#fff'],
+    searchText: '#ff00ff',
+    infoList: getInfoList('#ff00ff')
   }
 
-  handleUpdateInput = value => {
-    this.setState({ dataSource: [value, '#fff'] })
+  handleUpdateInput = searchText => {
+    const infoList = getInfoList(searchText)
+    this.setState({
+      dataSource: ['#fff'],
+      searchText,
+      infoList: infoList || this.state.infoList
+    })
   }
 
   render() {
-    const { dataSource } = this.state
-
-    const infoList = [
-      {
-        title: '#FFFF00 (input color)',
-        cssName: 'yellow',
-        color: '#ffff00',
-        rgb: '(255, 255, 0)',
-        rgba: '(255, 255, 0, 1)',
-        hsl: '(60, 100%, 50%)',
-        hwb: '(60, 0%, 0%)',
-        cmyk: '(0%, 0%, 100%, 0%)',
-        otherNames: ['黄色', 'イエロー']
-      }
-    ]
+    const { dataSource, searchText, infoList } = this.state
 
     return (
       <div className="Home">
@@ -45,7 +39,7 @@ class Home extends Component {
         <AutoComplete
           hintText="Input color code or name"
           dataSource={dataSource}
-          searchText="#ffff00"
+          searchText={searchText}
           onUpdateInput={this.handleUpdateInput}
           fullWidth
         />
