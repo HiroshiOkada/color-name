@@ -21,9 +21,10 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-left: 10px;
   color: rgba(0, 0, 0, 0.87);
+  min-width: 220px;
 }
 
 .Color-label {
   display: inline-block;
-  min-width: 9em;
+  min-width: 80px;
 }

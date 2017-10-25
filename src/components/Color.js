@@ -43,14 +43,14 @@ function Color(props) {
         <CardText expandable>
           {css3 ? (
             <LabelValue
-              label="CSS3 Name"
+              label="CSS3 name"
               value={css3.join(', ')}
               id={`${id}-css3`}
             />
           ) : null}
           {css4 ? (
             <LabelValue
-              label="CSS4 Name"
+              label="CSS4 name"
               value={css4.join(', ')}
               id={`${id}-css3`}
             />
