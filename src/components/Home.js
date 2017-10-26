@@ -3,6 +3,7 @@ import AutoComplete from 'material-ui/AutoComplete'
 import AppBar from 'material-ui/AppBar'
 import Color from './Color'
 import GitHubRibbon from './GitHubRibbon'
+import Description from './Description'
 import './Home.css'
 import { getInfoList } from '../utils'
 
@@ -34,17 +35,16 @@ class Home extends Component {
             <img src="/icon128.png" alt="" width={64} height={64} />
           }
         />
-        <AutoComplete
-          hintText="Input color code or name"
-          dataSource={dataSource}
-          searchText={searchText}
-          onUpdateInput={this.handleUpdateInput}
-          fullWidth
-        />
-        <div>
-          {infoList.map((info, idx) => (
-            <Color initiallyExpanded={idx < 2} key={info.title} info={info} />
-          ))}
+        <div className="Home-content">
+          <Description />
+          <AutoComplete
+            hintText="Input color code or name"
+            dataSource={dataSource}
+            searchText={searchText}
+            onUpdateInput={this.handleUpdateInput}
+            fullWidth
+          />
+          {infoList.map(info => <Color key={info.color} info={info} />)}
         </div>
       </div>
     )
