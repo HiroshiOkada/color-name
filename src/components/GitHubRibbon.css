@@ -1,0 +1,13 @@
+.GitHubRibbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+@media screen and (max-width: 1139px) {
+  .GitHubRibbon {
+    display: none;
+  }
+}
+
