@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
-import ColorLens from 'material-ui/svg-icons/image/color-lens'
 import AppBar from 'material-ui/AppBar'
-import IconButton from 'material-ui/IconButton'
 import Color from './Color'
 import './Home.css'
 import { getInfoList } from '../utils'
@@ -31,9 +29,7 @@ class Home extends Component {
         <AppBar
           title="Color Name"
           iconElementLeft={
-            <IconButton>
-              <ColorLens />
-            </IconButton>
+            <img src="/icon128.png" alt="" width={64} height={64} />
           }
         />
         <AutoComplete
