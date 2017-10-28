@@ -20,6 +20,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 I tested this project on ubunut 16.04 LTS.
 I think that it will work on other OS, but I have not tested it
 
+## Howto Deploy
+
+`yarn build` and upload build/ foler to your server
+
 ## Author
 
 Hiroshi Okada <okadahiroshi@miobox.jp>
