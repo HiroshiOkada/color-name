@@ -5,22 +5,37 @@ import Color from './Color'
 import GitHubRibbon from './GitHubRibbon'
 import Description from './Description'
 import './Home.css'
-import { getInfoList } from '../utils'
+import {
+  getInfoList,
+  getDataSourceFromLocalStoage,
+  setDataSourceToLocalStoage
+} from '../utils'
 
 class Home extends Component {
   state = {
-    dataSource: ['#fff'],
-    searchText: '#ff00ff',
-    infoList: getInfoList('#ff00ff')
+    dataSource: getDataSourceFromLocalStoage(),
+    searchText: '#',
+    infoList: []
   }
 
   handleUpdateInput = searchText => {
     const infoList = getInfoList(searchText)
-    this.setState({
-      dataSource: ['#fff'],
-      searchText,
-      infoList: infoList || this.state.infoList
-    })
+    if (infoList) {
+      const dataSource = [
+        searchText,
+        ...this.state.dataSource.filter(item => item !== searchText)
+      ]
+      this.setState({
+        searchText,
+        dataSource,
+        infoList: infoList || this.state.infoList
+      })
+      setDataSourceToLocalStoage(dataSource)
+    } else {
+      this.setState({
+        searchText
+      })
+    }
   }
 
   render() {

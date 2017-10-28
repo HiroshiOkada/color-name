@@ -1,7 +1,6 @@
 import convert from 'color-convert'
-import { hexToNames } from './name-hex'
+import { nameToHex, hexToNames } from './name-hex'
 import { nearColors } from '../utils/color-utils'
-import { nameToHex } from '../utils/name-hex'
 
 function nomalizeHex(text) {
   text = text.trim()
@@ -28,13 +27,9 @@ export function getInfo(hex) {
   const color = `#${hex.toUpperCase()}`
   const hsl = convert.hex.hsl(hex)
   const hwb = convert.hex.hwb(hex)
-  const title =
-    color +
-    ' ' +
-    Object.keys(names)
-      .map(key => names[key].join(', '))
-      .join(', ')
-
+  const title = `${color} ${Object.keys(names)
+    .map(key => names[key].join(', '))
+    .join(', ')}`
   return {
     title,
     ...names,
@@ -57,4 +52,22 @@ export function getInfoList(searchText) {
     hexList.unshift(hex)
   }
   return hexList.map(hx => getInfo(hx))
+}
+
+const DATA_SOURCE = 'DATA_SOURCE'
+export function getDataSourceFromLocalStoage() {
+  const str = localStorage.getItem(DATA_SOURCE)
+  try {
+    const dataSource = JSON.parse(str)
+    if (Array.isArray(dataSource)) {
+      return dataSource
+    }
+  } catch (_) {
+    // skip error and return []
+  }
+  return []
+}
+
+export function setDataSourceToLocalStoage(dataSource) {
+  localStorage.setItem(DATA_SOURCE, JSON.stringify(dataSource))
 }
