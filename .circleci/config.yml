@@ -1,13 +1,5 @@
 version: 2
 jobs:
-   build:
-     docker:
-       - image: circleci/node:8.9
-     working_directory: /tmp/my-project
-     steps:
-       - checkout
-       - run: npm install
-       - run: npm build
    test:
      docker:
        - image: circleci/node:8.9
@@ -18,8 +10,10 @@ jobs:
    deploy:
      docker:
        - image: circleci/node:8.9
-     working_directory: /tmp/my-project
      steps:
+       - checkout
+       - run: npm install
+       - run: npm build
        - run: sudo apt-get update && sudo apt-get install -qq -y python-pip libpython-dev
        - run: curl -O https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
        - run: sudo pip install -q awscli --upgrade
@@ -31,11 +25,9 @@ workflows:
   test-build-deploy:
     jobs:
       - test
-      - build
       - deploy:
           requires:
             - test
-            - build
           filters:
             branches:
               only: master
