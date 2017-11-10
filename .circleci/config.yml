@@ -23,6 +23,7 @@ jobs:
        - run: sudo apt-get update && sudo apt-get install -qq -y python-pip libpython-dev
        - run: curl -O https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
        - run: sudo pip install -q awscli --upgrade
+       - run: export AWS_DEFAULT_REGION=us-east-1
        - run: aws s3 sync build/ s3://color-name.toycode.com/ --delete
 
 workflows:
@@ -33,8 +34,8 @@ workflows:
       - build
       - deploy:
           requires:
-            - build
             - test
+            - build
           filters:
             branches:
               only: master
