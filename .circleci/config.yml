@@ -1,0 +1,41 @@
+version: 2
+jobs:
+   build:
+     docker:
+       - image: circleci/node:8.9
+     working_directory: /tmp/my-project
+     steps:
+       - checkout
+       - run: npm install
+       - run: npm build
+   test:
+     docker:
+       - image: circleci/node:8.9
+     steps:
+       - checkout
+       - run: npm install
+       - run: npm test
+   deploy:
+     docker:
+       - image: circleci/node:8.9
+     working_directory: /tmp/my-project
+     steps:
+       - run: sudo apt-get update && sudo apt-get install -qq -y python-pip libpython-dev
+       - run: curl -O https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
+       - run: sudo pip install -q awscli --upgrade
+       - run: aws s3 sync build/ s3://color-name.toycode.com/ --delete
+
+workflows:
+  version: 2
+  test-build-deploy:
+    jobs:
+      - test
+      - build
+      - deploy:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only: master
+
