@@ -3,3 +3,14 @@
   font-weight: normal;
 }
 
+.Description p {
+  margin: 0 8px;
+  padding-top: 0.3em;
+  line-height: 1.2em;
+}
+
+.Description-LinktoGithub {
+  padding-top: 0;
+  padding-right: 8px;
+  text-align: right;
+}

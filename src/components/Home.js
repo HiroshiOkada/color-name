@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 import AppBar from 'material-ui/AppBar'
 import Color from './Color'
-import GitHubRibbon from './GitHubRibbon'
 import Description from './Description'
 import './Home.css'
 import {
@@ -43,7 +42,6 @@ class Home extends Component {
 
     return (
       <div className="Home">
-        <GitHubRibbon />
         <AppBar
           title="Color Name"
           iconElementLeft={

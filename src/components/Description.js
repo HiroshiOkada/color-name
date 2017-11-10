@@ -1,11 +1,17 @@
 import React from 'react'
 import './Description.css'
+import { repository } from '../../package.json'
 
 function getLanguage() {
   return navigator.languages ? navigator.languages[0] : navigator.language
 }
 
 function Description() {
+  const githubURL = repository.replace(
+    /^git@github.com:/,
+    'https://github.com/'
+  )
+
   if (getLanguage().match(/ja/i)) {
     return (
       <div className="Description">
@@ -15,6 +21,7 @@ function Description() {
         </p>
         <p>色の名前は CSS で定義されているものと、JIS慣用色名 を表示しています。</p>
         <p>逆引きもできます。</p>
+        <p className="Description-LinktoGithub"><a href={githubURL}>ソースコード(GitHub)</a></p>
       </div>
     )
   }
@@ -30,6 +37,7 @@ function Description() {
         The name of colors in this page are came from CSS or JIS Z 8102:2001.
       </p>
       <p>Reverse lookup OK.</p>
+      <p className="Description-LinktoGithub"><a href={githubURL}>srccode(GitHub)</a></p>
     </div>
   )
 }
