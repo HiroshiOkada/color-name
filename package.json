@@ -6,30 +6,12 @@
   "repository": "git@github.com:HiroshiOkada/color-name.git",
   "author": "Hiroshi Okada <okadahiroshi@miobox.jp>",
   "license": "MIT",
-  "dependencies": {
-    "babel-eslint": "^8.0.1",
-    "color-convert": "^1.9.0",
-    "eslint": "^8.0.0",
-        "eslint-config-airbnb": "^19.0.0",
-        "eslint-plugin-import": "^2.25.0",
-        "eslint-plugin-jsx-a11y": "^6.5.0",
-        "eslint-plugin-react": "^7.25.0",
-    "material-ui": "^0.19.4",
-    "prettier": "^1.7.4",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-scripts": "^5.0.1"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
     "prettier": "prettier --write --no-semi --single-quote '**/*.js'",
-    "deploy": "gh-pages -d build"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [
@@ -42,7 +24,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "https://hiroshiokada.github.io/color-name/",
+  "devDependencies": {
+    "vite": "^6.2.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.8",
+    "@mui/material": "^6.4.8",
+    "@vitejs/plugin-react": "^4.3.4",
+    "color-convert": "^3.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
-,
-  "homepage": "https://hiroshiokada.github.io/color-name/"
 }

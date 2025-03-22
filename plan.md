@@ -1,30 +1,43 @@
-# Deployment Migration Plan: CircleCI to GitHub Actions
+## Plan for Fixing Vulnerabilities
 
-This document outlines the plan to migrate the deployment process from CircleCI to GitHub Actions and deploy the project to GitHub Pages.
+### Overview
 
-## 1. Remove CircleCI Configuration
+This plan outlines the steps to address the vulnerabilities in the project by updating dependencies.
 
-*   Remove the `.circleci` directory.
+### Steps
 
-## 2. Create GitHub Actions Workflow
+1.  **Create a new branch:** Create a new branch named `fix-vulnerabilities` to isolate the changes.
+2.  **Remove dependencies and clean:**
+    *   Remove all dependencies from `package.json`.
+    *   Delete `package-lock.json`.
+    *   Delete the `node_modules/` directory.
+3.  **Install packages:**
+    *   Use `npm ls` to inspect the dependency tree and identify top-level dependencies.
+    *   Install the identified packages one by one, without specifying versions (e.g., `npm install react`).
+    *   After each package installation, run `npm audit fix` to attempt to automatically fix any vulnerabilities. If it fails, run `npm audit fix --force`.
+4.  **Build and fix errors:**
+    *   Run the build command (e.g., `npm run build`).
+    *   If there are build errors, analyze the source code and fix them.
+    *   Repeat the build process until there are no errors.
 
-*   Create a new GitHub Actions workflow file (`.github/workflows/deploy.yml`) with the following steps:
-    *   Checkout the code.
-    *   Set up Node.js.
-    *   Install dependencies using `npm install`.
-    *   Build the project using `npm run build`.
-    *   Deploy to GitHub Pages using the `gh-pages` action.
+### Detailed Steps
 
-## 3. Configure GitHub Pages Deployment
+1.  **Create a new branch:**
 
-*   Add a `deploy` script to `package.json`: `"deploy": "gh-pages -d build"`
-*   Configure the GitHub Actions workflow to use the `gh-pages` action.
+    *   Execute the command `git checkout -b fix-vulnerabilities`.
+2.  **Remove dependencies and clean:**
 
-## 4. Test the Deployment
+    *   Read the contents of `package.json`.
+    *   Create a new `package.json` with only the basic project information (name, version, etc.) but without any dependencies.
+    *   Delete `package-lock.json` and `node_modules/`.
+3.  **Install packages:**
 
-*   Commit the changes and push them to the repository to trigger the workflow.
-*   Verify that the project is successfully deployed to GitHub Pages.
+    *   Run `npm ls` to inspect the dependency tree.
+    *   Identify the top-level dependencies from the output of `npm ls`.
+    *   Install the identified packages one by one using `npm install <package-name>`.
+    *   After each installation, run `npm audit fix`. If it reports errors or doesn't fix all vulnerabilities, run `npm audit fix --force`.
+4.  **Build and fix errors:**
 
-## 5. Document Web-Based Steps (If Necessary)
-
-*   If any steps require web-based interaction (e.g., enabling GitHub Pages), provide clear, step-by-step instructions in Japanese.
+    *   Run the build command specified in the original `package.json` (e.g., `npm run build`).
+    *   If there are build errors, analyze the source code and fix them.
+    *   Repeat the build process until there are no errors.
