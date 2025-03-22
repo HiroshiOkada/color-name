@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "cross-env NODE_ENV=production vite build",
     "serve": "vite preview",
     "prettier": "prettier --write --no-semi --single-quote '**/*.js'",
     "deploy": "gh-pages -d dist"
@@ -36,6 +36,7 @@
     "@mui/material": "^6.4.8",
     "@vitejs/plugin-react": "^4.3.4",
     "color-convert": "^3.0.1",
+    "cross-env": "^7.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }
