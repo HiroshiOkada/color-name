@@ -8,18 +8,14 @@ import nodePolyfills from 'rollup-plugin-node-polyfills';
 // https://vitejs.dev/config/
 export default defineConfig({
   root: '.',
+  publicDir: 'public',
+  base: '/color-name/',
   plugins: [react()],
   define: {
     'process.env': {},
   },
   build: {
-    rollupOptions: {
-      input: 'index.html',
-      plugins: [
-        rollupNodePolyFill(),
-        nodePolyfills()
-      ],
-    },
+    outDir: 'dist'
   },
   optimizeDeps: {
     esbuildOptions: {
