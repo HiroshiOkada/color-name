@@ -5,15 +5,14 @@ A Web application that displays matching or close CSS and JIS colors from hexade
 ## Getting Started
 
 * pull this project
-* `yarn install`
-* `yarn start`
+* `npm install`
+* `npm start`
 
 Open brower
 
 ### Prerequisites
 
 * nodejs v6.11 or heigher
-* yarn 1.2.1 or heigher (optional)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -22,7 +21,7 @@ I think that it will work on other OS, but I have not tested it
 
 ## Howto Deploy
 
-`yarn build` and upload build/ foler to your server
+`npm run build` and upload build/ foler to your server
 
 ## Author
 
