@@ -17,7 +17,16 @@ const ExpandMore = styled((props) => {
 
 function ColorBox(props) {
   const backgroundColor = props.color;
-  const style = { backgroundColor };
+  const size = props.variant === 'large' ? 80 : 40;
+  const style = {
+    backgroundColor,
+    width: size + 'px',
+    height: size + 'px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    display: 'inline-block',
+    marginRight: '8px'
+  };
   return <div className="Color-colorBox" style={style} />;
 }
 
@@ -55,6 +64,7 @@ function Color(props) {
     <div className="Color">
       <Card>
         <CardHeader
+          avatar={<ColorBox color={color} />}
           action={
             <ExpandMore
               expand={expanded}
