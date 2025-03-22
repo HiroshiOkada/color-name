@@ -14,6 +14,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Output enviroment information
+        run: |
+          node -v
+          env
       - run: npm install
       - run: npm run build
       - name: Deploy to GitHub Pages
