@@ -45,7 +45,7 @@ class Home extends Component {
         <AppBar
           title="Color Name"
           iconElementLeft={
-            <img src="%PUBLIC_URL%/icon128.png" alt="" width={64} height={64} />
+            <img src="/color-name/icon128.png" alt="" width={64} height={64} />
           }
         />
         <div className="Home-content">
