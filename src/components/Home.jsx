@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Autocomplete, TextField, AppBar } from '@mui/material';
+import Toolbar from '@mui/material/Toolbar';
 import Color from './Color.jsx';
 import Description from './Description.jsx';
 import './Home.css';
