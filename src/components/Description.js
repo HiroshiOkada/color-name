@@ -1,17 +1,13 @@
-import React from 'react'
-import './Description.css'
-import { repository } from '../../package.json'
+import React from 'react';
+import './Description.css';
+import packageJson from '../../package.json';
 
 function getLanguage() {
-  return navigator.languages ? navigator.languages[0] : navigator.language
+  return navigator.languages ? navigator.languages[0] : navigator.language;
 }
 
 function Description() {
-  const githubURL = repository.replace(
-    /^git@github.com:/,
-    'https://github.com/'
-  )
-
+  const githubURL = packageJson.repository.replace(/^git@github.com:/, 'https://github.com/');
   if (getLanguage().match(/ja/i)) {
     return (
       <div className="Description">
@@ -23,7 +19,7 @@ function Description() {
         <p>逆引きもできます。</p>
         <p className="Description-LinktoGithub"><a href={githubURL}>ソースコード(GitHub)</a></p>
       </div>
-    )
+    );
   }
   return (
     <div className="Description">
@@ -39,7 +35,7 @@ function Description() {
       <p>Reverse lookup OK.</p>
       <p className="Description-LinktoGithub"><a href={githubURL}>srccode(GitHub)</a></p>
     </div>
-  )
+  );
 }
 
-export default Description
+export default Description;
