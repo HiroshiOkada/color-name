@@ -7,18 +7,15 @@ import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  root: '.',
   plugins: [react()],
   define: {
     'process.env': {},
   },
   build: {
     rollupOptions: {
-      input: {
-        main: 'src/index.jsx',
-      },
+      input: 'index.html',
       plugins: [
-        // Enable rollup polyfills plugin
-        // used during production bundling
         rollupNodePolyFill(),
         nodePolyfills()
       ],
