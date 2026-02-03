@@ -18,6 +18,8 @@ Color Name is a web application that displays matching or similar CSS and JIS co
 
 ## Installation
 
+This project uses Yarn for dependency management; npm lockfiles are intentionally omitted.
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/HiroshiOkada/color-name.git
@@ -28,14 +30,14 @@ Color Name is a web application that displays matching or similar CSS and JIS co
    ```
 3. Install dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 ## Development
 
 To run the project locally in development mode:
 ```bash
-npm run dev
+yarn dev
 ```
 This will start the Vite development server.
 
@@ -43,7 +45,7 @@ This will start the Vite development server.
 
 To create a production build:
 ```bash
-npm run build
+yarn build
 ```
 
 ## Deployment

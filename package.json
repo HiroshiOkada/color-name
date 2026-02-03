@@ -26,6 +26,7 @@
     ]
   },
   "homepage": "https://hiroshiokada.github.io/color-name/",
+  "packageManager": "yarn@3.6.4",
   "devDependencies": {
     "vite": "^6.1.0"
   },
